@@ -1,8 +1,0 @@
-<h3>Personajes</h3>
-<hr>
-<ul>
-    <li *ngFor="let personaje of personajes">
-        <!-- | number -> es llamado Pipe y en este caso sirve para hacer de tipo number ese resultado, poniendo , o . de manera decimal tipo 9000 -> 9,000.00 -->
-        {{ personaje.nombre }} - {{personaje.poder | number}}
-    </li>
-</ul>
