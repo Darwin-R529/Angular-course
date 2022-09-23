@@ -1,14 +1,14 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { RESTCountriesResponse } from '../../interfaces/pais.interface';
+import { Country } from '../../interfaces/pais.interface';
 
 @Component({
   selector: 'app-pais-tabla',
   templateUrl: './pais-tabla.component.html',
-  styleUrls: ['./pais-tabla.component.css']
+  styleUrls: []
 })
 export class PaisTablaComponent implements OnInit {
 
-  @Input() paises: RESTCountriesResponse[] = []
+  @Input() paises: Country[] = [];
   
   constructor() { }
 

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { PaisService } from '../../services/pais.service';
-import { RESTCountriesResponse } from '../../interfaces/pais.interface';
+import { Country } from '../../interfaces/pais.interface';
 
 @Component({
   selector: 'app-por-pais',
@@ -11,7 +11,7 @@ export class PorPaisComponent {
 
   termino: string = ''
   hayError: boolean = false;
-  paises: RESTCountriesResponse[] = []
+  paises: Country[] = []
 
   constructor(private paisService: PaisService) { }
 
@@ -19,9 +19,11 @@ export class PorPaisComponent {
     this.hayError = false;
     this.termino = termino;
 
+    // Consumiendo el servicio API con el subscribe
     this.paisService.buscarPais(termino).subscribe(paises => {
       console.log(paises);
       this.paises = paises;
+      // Ingresamos la data de la API en this.paises
 
     }, (err) => {
       this.hayError = true;
@@ -29,6 +31,9 @@ export class PorPaisComponent {
     }
     );
 
-    this.termino = '';
+  }
+
+  sugerencias(termino: string) {
+    this.hayError = false;
   }
 }
