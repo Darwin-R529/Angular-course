@@ -1,16 +1,18 @@
 import { Component } from '@angular/core';
-import { PaisService } from '../../services/pais.service';
 import { Country } from '../../interfaces/pais.interface';
+import { PaisService } from '../../services/pais.service';
 
 @Component({
   selector: 'app-por-capital',
   templateUrl: './por-capital.component.html',
+  styleUrls: []
 })
 export class PorCapitalComponent {
 
   termino: string = ''
   hayError: boolean = false;
-  capital: Country[] = []
+  capitales: Country[] = []
+  buscarCapital: string = 'buscar capital'
 
   constructor(private paisService: PaisService) { }
 
@@ -19,14 +21,14 @@ export class PorCapitalComponent {
     this.termino = termino;
 
     // Consumiendo el servicio API con el subscribe
-    this.paisService.buscarCapital(termino).subscribe(capital => {
-      console.log(capital);
-      this.capital = capital;
+    this.paisService.buscarCapital(termino).subscribe(capitales => {
+      console.log(capitales);
+      this.capitales = capitales;
       // Ingresamos la data de la API en this.paises
 
     }, (err) => {
       this.hayError = true;
-      this.capital = [];
+      this.capitales = [];
     }
     );
 

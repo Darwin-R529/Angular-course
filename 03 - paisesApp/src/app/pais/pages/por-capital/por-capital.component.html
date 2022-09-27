@@ -1,20 +1,26 @@
-<h2>Por Capital</h2>
-<hr>
-
-<div class="row">
-    <div class="col">
-        <app-pais-input (onEnter)="buscar($event)" (onDebounce)="sugerencias($event)"></app-pais-input>
-    </div>
-
+<div class="animate__animated animate__fadeIn animate__faster">
+    <h2>Por Capital</h2>
     <hr>
-
-    <div *ngIf="hayError" class="alert alert-danger">
-        No se encontro nada con el término {{ termino }}
-    </div>
 
     <div class="row">
         <div class="col">
-            <!-- @Input desde pais-tabla.component -->
-            <app-capital-tabla [capitales]="capital"></app-capital-tabla>
+            <!-- placeholder="buscar capital -> de esta manera le estamos mandando a pais-input.component la propiedad como tal y la recibimos como un input" -->
+            <app-pais-input (onEnter)="buscar($event)" (onDebounce)="sugerencias($event)"
+                placeholder="buscar capital ...">
+            </app-pais-input>
+        </div>
+
+        <hr>
+
+        <div *ngIf="hayError" class="alert alert-danger">
+            No se encontro nada con el término {{ termino }}
+        </div>
+
+        <div *ngIf="capitales.length > 0" class="row">
+            <div class="col">
+                <!-- @Input desde pais-tabla.component -->
+                <app-pais-tabla [paises]="capitales"></app-pais-tabla>
+            </div>
         </div>
     </div>
+</div>

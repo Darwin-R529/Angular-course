@@ -11,12 +11,12 @@
     </thead>
     <tbody>
         <!-- paises es extraido desde por-pais.component con un input -->
-        <tr *ngFor="let pais of paises; let i = index">
+        <tr *ngFor="let pais of paises; let i = index" class="animate__animated animate__fadeIn animate__faster">
             <td>{{ i + 1 }}</td>
             <td>
                 <img [src]="pais.flags.svg" alt="" class="small-flag">
             </td>
-            <td>{{pais.name.common}}</td>
+            <td>{{pais.capital}},{{pais.name.common}}</td>
             <td>{{pais.population | number}}</td>
             <td>
                 <!-- Es necesario importar en Router module en pais.module para utilizar el routerLink en el <a> -->
